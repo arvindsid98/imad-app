@@ -1,10 +1,18 @@
 var button=document.getElementById("counter");
-var count=0;
+
 button.onclick=function(){
     
+    var request= new XMLHttpRequest();
     
-    count+=1;
-    var span=document.getElementById("count");
-    span.innerHTML= count.toString();
+    request.onreadystatechange= function(){
+        if(request.readyState===XMLHttpRequest.DONE){
+            if(request.status===200){
+                var counter=request.responseText;
+                var span=document.getElementById("count");
+                span.innerHTML= count.toString();
+            }
+        }
+        
+    };
 };
 
