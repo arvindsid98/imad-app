@@ -14,6 +14,7 @@ button.onclick=function(){
         }
         
     };
-    request.open("GET","http://aravind951.imad.hasura-app.io/counter");
+    request.open("GET","http://aravind951.imad.hasura-app.io/counter",true);
+    request.send(null);
 };
 
