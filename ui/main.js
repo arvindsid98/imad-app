@@ -4,11 +4,11 @@ var element=document.getElementById("main-text");
 element.innerHTML="New value";
 
 var log=document.getElementById("im");
-var marginleft=0;
-function moveright() {
-    marginleft=marginleft+10;
-    log.style.marginleft=marginleft+'px';
+var marginLeft=0;
+function moveRight() {
+    marginLeft=marginLeft+10;
+    log.style.marginLeft=marginLeft+'px';
 }
 log.onclick= function(){
-    var interval=setInterval(moveright,100);
+    var interval=setInterval(moveRight,100);
 };
