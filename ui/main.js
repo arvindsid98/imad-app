@@ -21,7 +21,7 @@ button.onclick=function(){
 var nameInput=document.getElementById("name");
 var name=nameInput.value;
 var sumbit=document.getElementById("submit_btn");
-submi.onclick= function(){
+submit.onclick= function(){
     
     var request= new XMLHttpRequest();
     
