@@ -21,7 +21,7 @@ button.onclick=function(){
 var nameInput=document.getElementById("name");
 var name=nameInput.value;
 var sumbit=document.getElementById("submit_btn");
-submi.onclick= function(){
+submit.onclick= function(){
 
     var names=['name1','name2','name3','name4'];
     var list="";
