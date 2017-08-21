@@ -13,6 +13,9 @@ var config={
 var app = express();
 app.use(morgan('combined'));
 
+
+
+
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
@@ -47,6 +50,24 @@ app.get('/test-db', function(req,res){
         res.send(JSON.stringify(result.rows));
     });
     
+});
+
+
+app.get('articles/articleeName',function(req,res){
+    
+    pool.query("'select * from article where article = "+req.params.articleName+"'",function(err,result){
+        if(err){
+            res,status(500).send(err.toString());
+        }
+        if(result.rows.length===0){
+            res.status(404).send("Article not found");
+        }
+        else{
+            var articleData=result.roes[0];
+            res.send(createTemplate(articleData));
+        }
+    });   
+
 });
 
 app.get('/ui/madi.png', function (req, res) {
