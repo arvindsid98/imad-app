@@ -98,7 +98,7 @@ app.post('/login/',function(req,res){
             var dbString2=result.rows[0].password;
             var salt=dbString.split('$')[2];
             var hashedPass=hash(password,salt);
-            if(dbString===hashedPass){
+            if(dbString === hashedPass){
                 res.send("user suuccessfully logged in");
             }
             else{
@@ -110,6 +110,34 @@ app.post('/login/',function(req,res){
     });
 });
 
+app.get('/login/',function(req,res){
+    
+    var username="sid";
+    var password="password";
+
+    pool.query('select * from "user" where name=$1 ',[username],function(err,result){
+        
+        if(err){
+            res.status(500).send(err.toString());
+        }
+        if(result.rows.length===0){
+            res.status(403).send("No such user: "+username);
+        }
+        else{
+            var dbString2=result.rows[0].password;
+            var salt=dbString.split('$')[2];
+            var hashedPass=hash(password,salt);
+            if(dbString === hashedPass){
+                res.send("user suuccessfully logged in");
+            }
+            else{
+                res.send("wrong password");
+            }
+        }
+        
+        
+    });
+});
 
 app.get('articles/articleeName',function(req,res){
     
