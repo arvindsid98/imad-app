@@ -102,7 +102,7 @@ app.post('/login/',function(req,res){
                 res.send("user suuccessfully logged in");
             }
             else{
-                res.send("wrong pasword");
+                res.send("wrong password");
             }
         }
         
