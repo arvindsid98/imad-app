@@ -104,7 +104,7 @@ app.post('/login/',function(req,res){
             var hashedPass=hash(password,salt);
             if(dbString === hashedPass){
                 
-                req.session.auth={userid: result.row[0].id};
+                req.session.auth={userId: result.row[0].id};
                 
                 res.send("user suuccessfully logged in");
             }
@@ -118,8 +118,8 @@ app.post('/login/',function(req,res){
 });
 
 app.get('/check-login',function(req,res){
-   if(req.session && req.session.auth && req.session.auth.userid){
-       res.send("You are Logged in userid: "+req.session.auth.userid.toString());
+   if(req.session && req.session.auth && req.session.auth.userId){
+       res.send("You are Logged in userid: "+req.session.auth.userId.toString());
    }
    else{
        res.send("Log in failure");
