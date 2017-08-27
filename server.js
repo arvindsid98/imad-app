@@ -60,7 +60,7 @@ function hash(input, salt){
     return hashed.toString('hex');
 }
 
-app.get('hash/:input',function(req,res){
+app.get('/hash/:input',function(req,res){
    var hashString=hash(req.params.input,"this-is-random-string");
    res.send(hashString);
 });
