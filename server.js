@@ -124,7 +124,7 @@ app.get('/login/',function(req,res){
             res.status(403).send("No such user: "+username);
         }
         else{
-            var dbString2=result.rows[0].password;
+            var dbString=result.rows[0].password;
             var salt=dbString.split('$')[2];
             var hashedPass=hash(password,salt);
             if(dbString === hashedPass){
