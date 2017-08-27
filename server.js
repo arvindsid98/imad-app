@@ -95,35 +95,6 @@ app.post('/login/',function(req,res){
             res.status(403).send("No such user: "+username);
         }
         else{
-            var dbString2=result.rows[0].password;
-            var salt=dbString.split('$')[2];
-            var hashedPass=hash(password,salt);
-            if(dbString === hashedPass){
-                res.send("user suuccessfully logged in");
-            }
-            else{
-                res.send("wrong password");
-            }
-        }
-        
-        
-    });
-});
-
-app.get('/login/',function(req,res){
-    
-    var username="sid";
-    var password="password";
-
-    pool.query('select * from "user" where name=$1 ',[username],function(err,result){
-        
-        if(err){
-            res.status(500).send(err.toString());
-        }
-        if(result.rows.length===0){
-            res.status(403).send("No such user: "+username);
-        }
-        else{
             var dbString=result.rows[0].password;
             var salt=dbString.split('$')[2];
             var hashedPass=hash(password,salt);
@@ -138,6 +109,8 @@ app.get('/login/',function(req,res){
         
     });
 });
+
+
 
 app.get('articles/articleeName',function(req,res){
     
