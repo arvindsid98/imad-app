@@ -96,13 +96,16 @@ app.post('/login/',function(req,res){
         }
         else{
             var dbString2=result.rows[0].password;
-            if(dbString===dbString2){
-                res.send("User login success");
+            var salt=dbString.split('$')[2];
+            var hashedPass=hash(password,salt);
+            if(dbString===hashedPass){
+                res.send("user suuccessfully logged in");
             }
             else{
-                res.send("wrong password");
+                res.send("wrong pasword");
             }
         }
+        
         
     });
 });
